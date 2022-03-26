@@ -1,58 +1,46 @@
-import { EventEmitter } from 'eventemitter3'
-import { NavigationContainerRef, ParamListBase } from '@react-navigation/native'
-import { RefObject } from 'react'
-import { retry } from 'ts-retry-promise'
-import { PartialDeep } from 'type-fest'
+import { EventEmitter } from 'eventemitter3';
+import { NavigationContainerRef, ParamListBase } from '@react-navigation/native';
+import { RefObject } from 'react';
+import { retry } from 'ts-retry-promise';
+import { PartialDeep } from 'type-fest';
+
+import { isNavigationReady } from './utils';
 
 interface EventMap {
-  initialized: () => void
+  initialized: () => void;
 }
 
 export type NavigationContainerRefType =
   | PartialDeep<RefObject<NavigationContainerRef<ParamListBase>>>
-  | never
+  | never;
 
 export default class ReactNativeWaitNavigation extends EventEmitter<EventMap> {
-  private initialized = false
-  private navigationRef: NavigationContainerRefType
+  private initialized = false;
+  private navigationRef: NavigationContainerRefType;
 
   constructor(navigationRef: NavigationContainerRefType) {
-    super()
+    super();
 
-    this.navigationRef = navigationRef
+    this.navigationRef = navigationRef;
 
-    this.checkNavigation()
+    this.checkNavigation();
   }
 
   get isInitialized() {
-    return this.initialized
-  }
-
-  private isNavigationReady() {
-    const state =
-      this.navigationRef &&
-      this.navigationRef.current &&
-      this.navigationRef.current.getRootState &&
-      this.navigationRef.current.getRootState()
-
-    if (state) {
-      return Promise.resolve(true)
-    }
-
-    throw new Error('Navigation is not ready')
+    return this.initialized;
   }
 
   private async checkNavigation() {
     try {
-      await retry(() => this.isNavigationReady(), {
+      await retry(() => isNavigationReady(this.navigationRef), {
         retries: 50,
         delay: 200,
-      })
+      });
       // eslint-disable-next-line no-empty
     } catch (error) {}
 
-    this.initialized = true
+    this.initialized = true;
 
-    this.emit('initialized')
+    this.emit('initialized');
   }
 }

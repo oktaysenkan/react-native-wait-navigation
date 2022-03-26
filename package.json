@@ -7,8 +7,8 @@
     "react",
     "react-navigation"
   ],
-  "main": "dist/lib/react-native-wait-navigation.js",
-  "typings": "dist/types/react-native-wait-navigation.d.ts",
+  "main": "dist/lib/index.js",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
@@ -56,6 +56,7 @@
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@react-navigation/native": "^6.0.8",
+    "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
@@ -68,6 +69,9 @@
     "jest-config": "^27.5.1",
     "lint-staged": "^12.3.7",
     "prettier": "^2.6.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-render": "^1.1.2",
     "standard-version": "^9.3.2",
     "ts-jest": "^27.1.4",
     "type-fest": "^2.12.1",

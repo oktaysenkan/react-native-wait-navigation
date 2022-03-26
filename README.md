@@ -34,3 +34,25 @@ export default function App() {
   );
 }
 ```
+
+or
+
+```tsx
+  import { createRef } from 'react';
+  import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
+  import { useWaitNavigation } from 'react-native-wait-navigation';
+
+  export const navigationRef = createRef<NavigationContainerRef>();
+
+  export default function App() {
+    useWaitNavigation(navigationRef, () => {
+      closeSplashScreen();
+    });
+
+    return (
+      <NavigationContainer ref={navigationRef}>
+          {/* Rest of your app code */}
+      </NavigationContainer>
+    );
+  }
+```

@@ -1,65 +1,42 @@
+import { wait } from 'ts-retry-promise';
+
 import ReactNativeWaitNavigation, {
   NavigationContainerRefType,
-} from './react-native-wait-navigation'
+} from './react-native-wait-navigation';
+import { mockGetRootState } from './test.utils';
 
-const navigationStates: Record<string, NavigationContainerRefType> = {
-  uninitialized: {
+it('emit "initialized" event after navigation initialized', async () => {
+  const mockFn = jest.fn();
+
+  const navigationRef: NavigationContainerRefType = {
     current: {},
-  },
-  initialized: {
-    current: {
-      getRootState: () => ({
-        index: 0,
-        key: '',
-        routeNames: [],
-        routes: [
-          {
-            key: '',
-            name: '',
-          },
-        ],
-        stale: false,
-        type: '',
-        history: [],
-      }),
-    },
-  },
-}
+  };
 
-const wait = async (ms: number) => await new Promise((resolve) => setTimeout(resolve, ms))
+  const emitter = new ReactNativeWaitNavigation(navigationRef);
 
-describe('test', () => {
-  it(`don't emit "initialized" event before navigation initialized`, () => {
-    const mockFn = jest.fn()
+  emitter.on('initialized', mockFn);
 
-    const navigationRef = navigationStates.uninitialized
+  await wait(500);
 
-    const emitter = new ReactNativeWaitNavigation(navigationRef)
+  if (navigationRef.current) {
+    navigationRef.current.getRootState = mockGetRootState;
+  }
 
-    emitter.on('initialized', mockFn)
+  await wait(500);
 
-    expect(mockFn).not.toHaveBeenCalled()
-    expect(emitter.isInitialized).toBe(false)
-  })
+  expect(mockFn).toBeCalledTimes(1);
+  expect(emitter.isInitialized).toBe(true);
+});
 
-  it('emit "initialized" event after navigation initialized', async () => {
-    const mockFn = jest.fn()
+it(`don't emit "initialized" event before navigation initialized`, () => {
+  const mockFn = jest.fn();
 
-    const navigationRef = navigationStates.uninitialized
+  const navigationRef = {};
 
-    const emitter = new ReactNativeWaitNavigation(navigationRef)
+  const emitter = new ReactNativeWaitNavigation(navigationRef);
 
-    emitter.on('initialized', mockFn)
+  emitter.on('initialized', mockFn);
 
-    await wait(500)
-
-    if (navigationRef.current && navigationStates.initialized.current) {
-      navigationRef.current.getRootState = navigationStates.initialized.current.getRootState
-    }
-
-    await wait(500)
-
-    expect(mockFn).toHaveBeenCalled()
-    expect(emitter.isInitialized).toBe(true)
-  })
-})
+  expect(mockFn).not.toHaveBeenCalled();
+  expect(emitter.isInitialized).toBe(false);
+});
