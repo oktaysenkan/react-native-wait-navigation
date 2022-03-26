@@ -1,0 +1,85 @@
+{
+  "name": "react-native-wait-navigation",
+  "version": "0.0.0",
+  "description": "React Native navigation initialization handler",
+  "keywords": [
+    "react-native",
+    "react",
+    "react-navigation"
+  ],
+  "main": "dist/lib/react-native-wait-navigation.js",
+  "typings": "dist/types/react-native-wait-navigation.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "Oktay Şenkan <oktay.senkan@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --coverage --runInBand",
+    "prepublish": "tsc",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier \"src/**/*.ts\" --write",
+    "commit": "git-cz",
+    "release": "standard-version"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "dist"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "collectCoverageFrom": [
+      "src/*.{js,ts}"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@react-navigation/native": "^6.0.8",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.23",
+    "@types/react": "^17.0.43",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.12.0",
+    "jest": "^27.5.1",
+    "jest-config": "^27.5.1",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.1",
+    "standard-version": "^9.3.2",
+    "ts-jest": "^27.1.4",
+    "type-fest": "^2.12.1",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "eventemitter3": "^4.0.7",
+    "ts-retry-promise": "^0.6.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
