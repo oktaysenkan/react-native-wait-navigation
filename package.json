@@ -15,7 +15,7 @@
   "author": "Oktay Şenkan <oktay.senkan@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/oktaysenkan/react-native-wait-navigation"
   },
   "license": "MIT",
   "engines": {
