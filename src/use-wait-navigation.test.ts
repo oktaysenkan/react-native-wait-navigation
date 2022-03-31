@@ -40,7 +40,7 @@ test(`don't emit "initialized" event before navigation initialized`, async () =>
   const { result } = renderHook(() => useWaitNavigation(navigationRef, mockFn));
 
   await act(async () => {
-    await wait(1000);
+    await wait(15000);
   });
 
   expect(mockFn).not.toHaveBeenCalled();

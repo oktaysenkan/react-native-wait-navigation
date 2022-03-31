@@ -28,7 +28,7 @@ it('emit "initialized" event after navigation initialized', async () => {
   expect(emitter.isInitialized).toBe(true);
 });
 
-it(`don't emit "initialized" event before navigation initialized`, () => {
+it(`don't emit "initialized" event before navigation initialized`, async () => {
   const mockFn = jest.fn();
 
   const navigationRef = {};
@@ -36,6 +36,8 @@ it(`don't emit "initialized" event before navigation initialized`, () => {
   const emitter = new ReactNativeWaitNavigation(navigationRef);
 
   emitter.on('initialized', mockFn);
+
+  await wait(15000);
 
   expect(mockFn).not.toHaveBeenCalled();
   expect(emitter.isInitialized).toBe(false);

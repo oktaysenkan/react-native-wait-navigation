@@ -36,11 +36,12 @@ export default class ReactNativeWaitNavigation extends EventEmitter<EventMap> {
         retries: 50,
         delay: 200,
       });
+
+      this.initialized = true;
+
+      this.emit('initialized');
+
       // eslint-disable-next-line no-empty
     } catch (error) {}
-
-    this.initialized = true;
-
-    this.emit('initialized');
   }
 }
