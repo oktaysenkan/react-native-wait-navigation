@@ -1,6 +1,6 @@
 # React Native Wait Navigation
 
-React Native Navigation initializion handler.
+React Native Navigation initialization handler.
 
 ## Installation
 
