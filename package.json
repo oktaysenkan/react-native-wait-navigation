@@ -1,6 +1,6 @@
 {
   "name": "react-native-wait-navigation",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React Native navigation initialization handler",
   "keywords": [
     "react-native",

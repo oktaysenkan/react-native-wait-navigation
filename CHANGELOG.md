@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/oktaysenkan/react-native-wait-navigation/compare/v0.2.0...v0.2.1) (2022-03-31)
+
+
+### Bug Fixes
+
+* move handler function to try block ([57bfcac](https://github.com/oktaysenkan/react-native-wait-navigation/commit/57bfcac87dd79814ce798067c927852dec316124))
+
 ## [0.2.0](https://github.com/oktaysenkan/react-native-wait-navigation/compare/v0.1.0...v0.2.0) (2022-03-26)
 
 
