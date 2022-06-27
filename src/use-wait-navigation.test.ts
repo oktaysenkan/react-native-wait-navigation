@@ -5,9 +5,8 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { wait } from 'ts-retry-promise';
 
-import { NavigationContainerRefType } from './react-native-wait-navigation';
 import { mockGetRootState } from './test.utils';
-import useWaitNavigation from './use-wait-navigation';
+import useWaitNavigation, { NavigationContainerRefType } from './use-wait-navigation';
 
 test('emit "initialized" event after navigation initialized', async () => {
   const navigationRef: NavigationContainerRefType = {

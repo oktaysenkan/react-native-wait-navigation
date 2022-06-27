@@ -1,4 +1,4 @@
-import { NavigationContainerRefType } from './react-native-wait-navigation';
+import { NavigationContainerRefType } from './use-wait-navigation';
 
 export const isNavigationReady = (navigationRef: NavigationContainerRefType) => {
   const state =
