@@ -60,7 +60,7 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.23",
-    "@types/react": "^17.0.43",
+    "@types/react": "^18.2.0",
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
     "commitizen": "^4.2.4",
@@ -70,9 +70,6 @@
     "jest-config": "^27.5.1",
     "lint-staged": "^12.3.7",
     "prettier": "^2.6.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-test-render": "^1.1.2",
     "standard-version": "^9.3.2",
     "ts-jest": "^27.1.4",
     "type-fest": "^2.12.1",
@@ -80,7 +77,17 @@
   },
   "dependencies": {
     "eventemitter3": "^4.0.7",
+    "lodash.camelcase": "^4.3.0",
+    "react-dom": "^18.3.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.36.0",
     "ts-retry-promise": "^0.6.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
   },
   "config": {
     "commitizen": {

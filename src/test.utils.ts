@@ -1,4 +1,4 @@
-import { NavigationContainerRef, ParamListBase } from '@react-navigation/native';
+import type { NavigationContainerRef, ParamListBase } from '@react-navigation/native';
 
 export const mockGetRootState: NavigationContainerRef<ParamListBase>['getRootState'] = () => ({
   index: 0,
