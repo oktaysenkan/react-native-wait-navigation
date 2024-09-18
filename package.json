@@ -77,14 +77,14 @@
   },
   "dependencies": {
     "eventemitter3": "^4.0.7",
+    "fuuu": "^0.0.8",
     "lodash.camelcase": "^4.3.0",
     "react-dom": "^18.3.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-typescript2": "^0.36.0",
-    "ts-retry-promise": "^0.6.1"
+    "rollup-plugin-typescript2": "^0.36.0"
   },
   "peerDependencies": {
     "react": "^18.2.0"

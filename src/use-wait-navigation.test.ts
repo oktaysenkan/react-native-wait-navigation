@@ -3,7 +3,7 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
-import { wait } from 'ts-retry-promise';
+import * as f from 'fuuu';
 
 import { mockGetRootState } from './test.utils';
 import useWaitNavigation, { NavigationContainerRefType } from './use-wait-navigation';
@@ -18,13 +18,13 @@ test('emit "initialized" event after navigation initialized', async () => {
   const { result } = renderHook(() => useWaitNavigation(navigationRef, mockFn));
 
   await act(async () => {
-    await wait(500);
+    await f.sleep(500);
 
     if (navigationRef.current) {
       navigationRef.current.getRootState = mockGetRootState;
     }
 
-    await wait(500);
+    await f.sleep(500);
   });
 
   expect(mockFn).toBeCalledTimes(1);
@@ -39,7 +39,7 @@ test(`don't emit "initialized" event before navigation initialized`, async () =>
   const { result } = renderHook(() => useWaitNavigation(navigationRef, mockFn));
 
   await act(async () => {
-    await wait(15000);
+    await f.sleep(15000);
   });
 
   expect(mockFn).not.toHaveBeenCalled();

@@ -1,7 +1,7 @@
 import { NavigationContainerRef, ParamListBase } from '@react-navigation/native';
 import { RefObject, useEffect, useState } from 'react';
-import { retry } from 'ts-retry-promise';
 import { PartialDeep } from 'type-fest';
+import * as f from 'fuuu';
 
 import { isNavigationReady } from './utils';
 
@@ -17,17 +17,17 @@ const useWaitNavigation = (navigationRef: NavigationContainerRefType, handler: (
   }, [navigationRef]);
 
   const checkNavigation = async () => {
-    try {
-      await retry(() => isNavigationReady(navigationRef), {
-        retries: 50,
-        delay: 200,
-      });
+    const result = await f.safe(() => isNavigationReady(navigationRef), {
+      retries: 1600,
+      retryDelay: 10,
+      timeout: 15000,
+    });
 
-      setInitialized(true);
+    if (result.error) return;
 
-      handler();
-      // eslint-disable-next-line no-empty
-    } catch (error) {}
+    setInitialized(true);
+
+    handler();
   };
 
   return { initialized };
